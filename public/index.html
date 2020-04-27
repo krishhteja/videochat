@@ -11,15 +11,20 @@
     <div class="container-fluid">
         <div class="row h-10 w-100">
             <div class="col">
-                <select id="filter" class="w-100 bg-dark text-light ml-2 mt-2 select font-weight-bold border">
-                    <option value="none">Normal</option>
-                    <option value="grayscale(100%)">B & W</option>
-                    <option value="sepia(100%)">Old School</option>
-                    <option value="contrast(150%)">Lumination</option>
-                    <option value="blur(20px)">Hidden Mist</option>
-                    <option value="invert(100%)">Dracula</option>
-                    <option value="hue-rotate(180deg">X-men Beast</option>
-                    <option value="saturate(25)">Super Saiyan God</option>
+                <select id="message" class="w-100 bg-dark text-light ml-2 mt-2 select font-weight-bold border">
+                    <option value="none">Select</option>
+                    <option value="namaste">Namaste</option>
+                    <option value="name">What is your name?</option>
+                    <option value="sanitize">Please sanitize your hands</option>
+                    <option value="ftray">Please take your food from tray</option>
+                    <option value="fdrawer1">Please take your food from Drawer 1</option>
+                    <option value="fdrawer2">Please take your food from Drawer 2</option>
+                    <option value="medicine">Please take your medicine from tray</option>
+                    <option value="mdrawer1">Please take your medicine from Drawer 1</option>
+                    <option value="mdrawer2">Please take your medicine from Drawer 2</option>
+                    <option value="thankyou">Thank you</option>
+                    <option value="goodday">Have a Good Day</option>
+                    <option value="night">Good Night</option>
                 </select>
             </div>
             <div class="col">
@@ -32,18 +37,24 @@
             </div>
         </div>
         <div class="row h-90 w-100">
-            <div class="col-12 col-sm-6 d-flex justify-content-center">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <video class="embed-responsive-item" muted></video>
+            <div class="col-12 col-sm-10 d-flex justify-content-center">
+                <div id="peerDiv" class="embed-responsive embed-responsive-16by9">
                 </div>
             </div>
-            <div class="col-12 col-sm-6 d-flex justify-content-center">
-                <div id="peerDiv" class="embed-responsive embed-responsive-16by9">
+	    <div class="col-12 col-sm-2 d-flex justify-content-center">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <video class="embed-responsive-item" muted></video>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class = "container-fluid" style = "display:None">
+            <audio controls id = "audioPlayer">
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="bundle.js"></script>
 </body>

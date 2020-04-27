@@ -7530,8 +7530,9 @@ function config (name) {
 let Peer = require('simple-peer')
 let socket = io()
 const video = document.querySelector('video')
-const filter = document.querySelector('#filter')
+const message = document.querySelector('#message')
 const checkboxTheme = document.querySelector('#theme')
+const source = document.querySelector('#audioPlayer')
 let client = {}
 let currentFilter
 //get stream
@@ -7541,12 +7542,16 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         video.srcObject = stream
         video.play()
 
-        filter.addEventListener('change', (event) => {
+	message.addEventListener('change', (event) => {
+            socket.emit('message', event.target.value)
+        })
+        /*
+	filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
             video.style.filter = currentFilter
             SendFilter(currentFilter)
             event.preventDefault
-        })
+        })*/
 
         //used to initialize a peer
         function InitPeer(type) {
@@ -7579,6 +7584,11 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             client.peer = peer
         }
 
+	function play(msg){
+			song =  "https://"+window.location.hostname+"/"+ msg + ".mp3";
+			source.src = song;
+			source.play();
+	}
         //for peer of type not init
         function FrontAnswer(offer) {
             let peer = InitPeer('notInit')
@@ -7633,7 +7643,7 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 client.peer.destroy()
             }
         }
-
+	socket.on('messagedata', play)
         socket.on('BackOffer', FrontAnswer)
         socket.on('BackAnswer', SignalAnswer)
         socket.on('SessionActive', SessionActive)

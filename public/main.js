@@ -2,7 +2,8 @@
 let Peer = require('simple-peer')
 let socket = io()
 const video = document.querySelector('video')
-const filter = document.querySelector('#filter')
+//const filter = document.querySelector('#filter')
+const message = document.querySelector('#message')
 const checkboxTheme = document.querySelector('#theme')
 let client = {}
 let currentFilter
@@ -13,11 +14,15 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         video.srcObject = stream
         video.play()
 
-        filter.addEventListener('change', (event) => {
+        /*filter.addEventListener('change', (event) => {
             currentFilter = event.target.value
             video.style.filter = currentFilter
             SendFilter(currentFilter)
             event.preventDefault
+        })*/
+    
+        message.addEventListener('change', (event) => {
+            socket.emit('message', event.target.value)
         })
 
         //used to initialize a peer

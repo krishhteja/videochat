@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 const options = {
-  key: fs.readFileSync('SSL.key'),
-  cert: fs.readFileSync('SSL.crt')
+  key: fs.readFileSync('henkausssl.key'),
+  cert: fs.readFileSync('henkaus.com.crt')
 };
 const https = require('https')
 var server=https.createServer(options, app);
@@ -28,6 +28,10 @@ io.on('connection', function (socket) {
         else
             this.emit('SessionActive')
         clients++;
+    })
+    socket.on('message', function(message){
+        console.log('message' + message)
+        this.broadcast.emit("messagedata", message)
     })
     socket.on('Offer', SendOffer)
     socket.on('Answer', SendAnswer)

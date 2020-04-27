@@ -1,9 +1,13 @@
-Base code is taken from https://github.com/Vinnu1/simple-videochat-webrtc/
+# Simple Video Chat WebRTC
 
-Needs https to run. Modified accordingly
+### By using [simple-peer](https://github.com/feross/simple-peer), this web app connects video chat between two clients.
 
-To run
-```
-npm install
-npm start
-```
+## How To Use
+
+Install dependencies - npm install  
+Start - npm start  
+
+For development run watchify - npm run watch  
+
+Open localhost in two browser tabs for testing.  
+Deploy it and open url in two separate devices for real-world usage.
