@@ -1,5 +1,28 @@
-video {
+#video_box{
+    float:center;
+}
+
+#peerDiv {
     transform: rotateY(180deg); 
+    width: 100%;
+    height:100%;
+}
+
+#peerVideo{
+    width: 100%;
+}
+
+#uservid {
+    position:absolute;
+    transform: rotateY(180deg); 
+    float:center;
+    top:85%;
+    right:5%;
+    width:10%;
+    min-height:30px;
+    height:10%;
+    background-color:#fff;
+    z-index:300000;
 }
 
 .select {

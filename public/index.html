@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="mainchannel">
         <div class="row h-10 w-100">
             <div class="col">
                 <select id="message" class="w-100 bg-dark text-light ml-2 mt-2 select font-weight-bold border">
@@ -36,25 +36,26 @@
                 </div>
             </div>
         </div>
-        <div class="row h-90 w-100">
-            <div class="col-12 col-sm-10 d-flex justify-content-center">
-                <div id="peerDiv" class="embed-responsive embed-responsive-16by9">
-                </div>
-            </div>
-	    <div class="col-12 col-sm-2 d-flex justify-content-center">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <video class="embed-responsive-item" muted></video>
-                </div>
-            </div>
+        <div class="row h-90 w-100" id="video_box">
+            <div id = "peerDiv" class="peerVideo"></div>
+            <video id="uservid" class="userVideo" muted></video>
         </div>
     </div>
+                        <div class = "container-fluid" id="videochannel" style="display:None">
+                            <video width="100" id = "videoplayer" controls>
+                              <source src="" type="video/mp4">
+                              Your browser does not support HTML5 video.
+                            </video>
+                    </div>
 
     <div class = "container-fluid" style = "display:None">
             <audio controls id = "audioPlayer">
                 <source src="" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
+        
         </div>
+    
     <script src="/socket.io/socket.io.js"></script>
     <script src="bundle.js"></script>
 </body>

@@ -7529,10 +7529,14 @@ function config (name) {
 
 let Peer = require('simple-peer')
 let socket = io()
-const video = document.querySelector('video')
+const video = document.querySelector('#uservid')
 const message = document.querySelector('#message')
 const checkboxTheme = document.querySelector('#theme')
 const source = document.querySelector('#audioPlayer')
+const vidsrc = document.querySelector('#videoplayer')
+const vidmod = document.querySelector('#vidmodal')
+const mainchannel = document.querySelector('#mainchannel')
+const videochannel = document.querySelector('#videochannel')
 let client = {}
 let currentFilter
 //get stream
@@ -7585,9 +7589,24 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
         }
 
 	function play(msg){
-			song =  "https://"+window.location.hostname+"/"+ msg + ".mp3";
-			source.src = song;
-			source.play();
+			//song =  "https://"+window.location.hostname+"/"+ msg + ".mp3";
+			//source.src = song;
+			//source.play();
+            if(msg == "none"){
+                vidsrc.pause();
+                mainchannel.style.display = "block";;
+                videochannel.style.display = "none";;
+                return;
+            }
+			song =  "https://"+window.location.hostname+"/"+ msg + ".mp4";
+            console.log(song)
+			vidsrc.src = song;
+            mainchannel.style.display = "none";;
+            videochannel.style.display = "block";;
+			vidsrc.play();
+            //mainchannel.style.display = "block";;
+            //videochannel.style.display = "none";;
+			
 	}
         //for peer of type not init
         function FrontAnswer(offer) {
@@ -7607,7 +7626,6 @@ navigator.mediaDevices.getUserMedia({ video: true, audio: true })
 
         function CreateVideo(stream) {
             CreateDiv()
-
             let video = document.createElement('video')
             video.id = 'peerVideo'
             video.srcObject = stream

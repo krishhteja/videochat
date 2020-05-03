@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 const options = {
-  key: fs.readFileSync('henkausssl.key'),
-  cert: fs.readFileSync('henkaus.com.crt')
+  key: fs.readFileSync('ssl.key'),
+  cert: fs.readFileSync('ssl.crt')
 };
 const https = require('https')
 var server=https.createServer(options, app);
